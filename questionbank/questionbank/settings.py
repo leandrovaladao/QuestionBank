@@ -44,8 +44,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
-    'users',
     'api',
+    'users',
+    'questionscore',    
 ]
 
 MIDDLEWARE = [
