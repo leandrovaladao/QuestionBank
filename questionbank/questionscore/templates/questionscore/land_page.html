@@ -1,0 +1,8 @@
+{% extends "questionscore/base_page.html" %}
+
+{% block content %}
+<form method="post" action="/questionscore/logout/">
+	{% csrf_token %}
+	<input type="submit" name="submit" value="Logout">
+</form>
+{% endblock %}
