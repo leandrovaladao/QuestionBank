@@ -9,9 +9,10 @@ from rest_framework.decorators import api_view
 
 from django.contrib.auth import authenticate, login, logout
 
+from django.contrib.auth.decorators import login_required
+
 
 def createuser(request):
-	print 'entrouuu'
 	return render(request, 'questionscore/createuser.html')
 
 @api_view(["POST"])
@@ -32,7 +33,7 @@ def login_user(request):
 		if user is not None:
 			if user.is_active:
 				login(request, user)
-				return render(request, 'questionscore/land_page.html')
+				return redirect('/questionscore/landpage/')
 			else:
 				return render(request, 'questionscore/login.html')
 		else:
@@ -43,3 +44,7 @@ def login_user(request):
 def logout_user(request):
 	logout(request)
 	return redirect('/questionscore/login/')
+
+@login_required
+def land_page(request):
+	return render(request, 'questionscore/land_page.html')
